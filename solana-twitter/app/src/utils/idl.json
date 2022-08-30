@@ -3,8 +3,130 @@
   "name": "solana_twitter",
   "instructions": [
     {
+      "name": "createLikeMint",
+      "accounts": [
+        {
+          "name": "likeMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "likeMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "likeMintAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "createRetweetMint",
+      "accounts": [
+        {
+          "name": "retweetMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "retweetMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "retweetMintAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
       "name": "createProfile",
       "accounts": [
+        {
+          "name": "likeMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "likeMintAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "likeTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "retweetMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "retweetMintAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "retweetTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
         {
           "name": "profile",
           "isMut": true,
@@ -16,7 +138,22 @@
           "isSigner": true
         },
         {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
           "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
           "isMut": false,
           "isSigner": false
         }
@@ -97,6 +234,21 @@
       "name": "createLike",
       "accounts": [
         {
+          "name": "likeMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "likeMintAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authorTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
           "name": "like",
           "isMut": true,
           "isSigner": false
@@ -107,8 +259,13 @@
           "isSigner": false
         },
         {
-          "name": "profile",
+          "name": "submitterProfile",
           "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authorWallet",
+          "isMut": false,
           "isSigner": false
         },
         {
@@ -120,6 +277,11 @@
           "name": "systemProgram",
           "isMut": false,
           "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
         }
       ],
       "args": []
@@ -127,6 +289,21 @@
     {
       "name": "createRetweet",
       "accounts": [
+        {
+          "name": "retweetMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "retweetMintAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authorTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
         {
           "name": "retweet",
           "isMut": true,
@@ -138,8 +315,13 @@
           "isSigner": false
         },
         {
-          "name": "profile",
+          "name": "submitterProfile",
           "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authorWallet",
+          "isMut": false,
           "isSigner": false
         },
         {
@@ -149,6 +331,11 @@
         },
         {
           "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
           "isMut": false,
           "isSigner": false
         }
@@ -180,6 +367,38 @@
           },
           {
             "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LikeMintAuthorityPda",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "mintBump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RetweetMintAuthorityPda",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "mintBump",
             "type": "u8"
           }
         ]
@@ -279,6 +498,6 @@
     }
   ],
   "metadata": {
-    "address": "Etez1vCVYGuvr1hg1Qsjj8yVyWAafWbRKAzqN98eDGus"
+    "address": "ECRSKA4enYByxHYfpNQ4JRvd98y81CGwvtg88iP6RjVF"
   }
 }

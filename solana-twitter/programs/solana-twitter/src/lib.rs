@@ -6,12 +6,30 @@ pub mod instructions;
 pub mod state;
 
 
-declare_id!("Etez1vCVYGuvr1hg1Qsjj8yVyWAafWbRKAzqN98eDGus");
+declare_id!("ECRSKA4enYByxHYfpNQ4JRvd98y81CGwvtg88iP6RjVF");
 
 
 #[program]
 pub mod solana_twitter {
     use super::*;
+
+    pub fn create_like_mint(
+        ctx: Context<CreateLikeMint>, 
+    ) -> Result<()> {
+
+        instructions::create_mint::create_like_mint(
+            ctx, 
+        )
+    }
+
+    pub fn create_retweet_mint(
+        ctx: Context<CreateRetweetMint>, 
+    ) -> Result<()> {
+
+        instructions::create_mint::create_retweet_mint(
+            ctx, 
+        )
+    }
 
     pub fn create_profile(
         ctx: Context<CreateProfile>, 
